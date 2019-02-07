@@ -11,7 +11,8 @@ class Customer(models.Model):
     customer_email = models.EmailField(blank=True)
     customer_company = models.CharField(
         max_length=254, unique=True, blank=True)
-    customer_phonenumber = PhoneNumberField(blank=True)
+    customer_phonenumber = PhoneNumberField(
+        blank=True, verbose_name='Phone Number')
     customer_rides = models.ManyToManyField(
         'rides.Ride', related_name='customers', blank=True)
 

@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}List Jobs{% endblock title %}
+
+{% block content %}
+
+
+
+{% for job in jobs %}
+{{job}}
+
+{% endfor %}
+
+{% endblock %}

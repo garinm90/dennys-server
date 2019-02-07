@@ -8,7 +8,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('pages.urls', namespace='pages')),
     path('customers/', include('customers.urls', namespace='customers')),
-    path('rides/', include('rides.urls')),
+    path('rides/', include('rides.urls', namespace='rides')),
+    path('jobs/', include('jobs.urls', namespace='jobs'))
 ]
 
 if settings.DEBUG:

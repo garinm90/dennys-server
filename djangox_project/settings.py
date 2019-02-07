@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'pages',
     'customers.apps.CustomersConfig',
     'rides.apps.RidesConfig',
+    'jobs.apps.JobsConfig',
 ]
 
 MIDDLEWARE = [

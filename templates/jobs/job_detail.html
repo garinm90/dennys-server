@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}List Customer{% endblock title %}
+
+{% block content %}
+
+Job #{{ job.job_number }} for {{job.customer}}'s {{ job.ride }}
+{% endblock %}
