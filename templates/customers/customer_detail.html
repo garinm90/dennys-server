@@ -1,12 +1,13 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %}List Customer{% endblock title %}
+{% block title %}{{ customer }} details{% endblock title %}
 
 {% block content %}
 
 
-{{ customer }}<br>
+
+{{ customer }}
 {% for ride in  customer.customer_rides.all %}
 {{ ride }}
 {% endfor %}

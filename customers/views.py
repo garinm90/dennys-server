@@ -48,3 +48,7 @@ class CustomerUpdateRide(UpdateView):
 class CustomerDelete(DeleteView):
     model = Customer
     success_url = reverse_lazy('pages:home')
+
+
+class CustomerListRides(ListView):
+    model = Customer
