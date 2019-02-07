@@ -1,17 +1,9 @@
 from django.db import models
+from django.urls import reverse
 from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
-class Ride(models.Model):
-    ride_name = models.CharField(
-        max_length=100, blank=False, null=False, unique=True)
-
-    class Meta:
-        ordering = ('ride_name',)
-
-    def __str__(self):
-        return self.ride_name.title()
 
 
 class Customer(models.Model):
@@ -21,10 +13,13 @@ class Customer(models.Model):
         max_length=254, unique=True, blank=True)
     customer_phonenumber = PhoneNumberField(blank=True)
     customer_rides = models.ManyToManyField(
-        Ride, related_name='customers', blank=True)
+        'rides.Ride', related_name='customers', blank=True)
 
     class Meta:
         ordering = ('customer_name', )
 
     def __str__(self):
         return self.customer_name.title()
+
+    def get_absolute_url(self):
+        return reverse('customers:detail_customer', args=[str(self.id)])

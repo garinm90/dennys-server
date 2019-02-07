@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}List Ride{% endblock title %}
+
+{% block content %}
+
+
+
+{% for ride in rides %}
+{{ride}}
+{% if ride.customers.customer %}
+<h4> We have customers </h4>
+{% endif %}
+{% endfor %}
+
+{% endblock %}

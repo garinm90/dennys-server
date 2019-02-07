@@ -1,8 +1,11 @@
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
-from customers.models import Customer, Ride
-from customers.serializers import CustomerSerializer, RideSerializer
+from .models import Customer
+from .serializers import CustomerSerializer
+from .forms import RideForm
 from rest_framework import viewsets, generics
+
 
 # Create your views here.
 
@@ -15,15 +18,33 @@ from rest_framework import viewsets, generics
 # class RideViewSet(generics.ListCreateAPIView):
 #     queryset = Ride.objects.all()
 #     serializer_class = RideSerializer
+class CustomerList(ListView):
+    model = Customer
+    context_object_name = 'customers'
 
 
-class RideCreate(CreateView):
-    model = Ride
-    fields = ('ride_name',)
-    success_url = reverse_lazy('pages:home')
+class CustomerDetail(DetailView):
+    model = Customer
+    context_object_name = 'customer'
 
 
 class CustomerCreate(CreateView):
     model = Customer
     fields = ('customer_name', 'customer_email',
               'customer_company', 'customer_phonenumber')
+
+
+class CustomerUpdate(UpdateView):
+    model = Customer
+    fields = ('customer_name', 'customer_email',
+              'customer_company', 'customer_phonenumber', 'customer_rides')
+
+
+class CustomerUpdateRide(UpdateView):
+    model = Customer
+    form_class = RideForm
+
+
+class CustomerDelete(DeleteView):
+    model = Customer
+    success_url = reverse_lazy('pages:home')
