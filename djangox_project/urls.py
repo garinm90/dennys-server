@@ -6,7 +6,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
-    path('', include('pages.urls')),
+    path('', include('pages.urls', namespace='pages')),
+    path('customers/', include('customers.urls')),
+    path('rides/', include('customers.rideurl'))
 ]
 
 if settings.DEBUG:

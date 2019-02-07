@@ -9,10 +9,14 @@ django-allauth = "*"
 django-crispy-forms = "*"
 "psycopg2-binary" = "*"
 django-debug-toolbar = "*"
+djangorestframework = "*"
+django-phonenumber-field = "*"
+phonenumbers = "*"
 
 [dev-packages]
 "autopep8" = "*"
 pylint = "*"
+"pep8" = "*"
 
 [requires]
 python_version = "3.7"

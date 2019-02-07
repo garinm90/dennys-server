@@ -26,7 +26,7 @@ SECRET_KEY = '43)%4yx)aa@a=+_c(fn&kf3g29xax+=+a&key9i=!98zyim=8j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost',]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
 # tricks to have debug toolbar when developing with docker
 ip = socket.gethostbyname(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + '1']
@@ -48,10 +48,13 @@ INSTALLED_APPS = [
     'allauth.account',  # new
     'crispy_forms',  # new
     'debug_toolbar',
+    'rest_framework',
+    'phonenumber_field',
 
     # Local
     'users',
     'pages',
+    'customers.apps.CustomersConfig',
 ]
 
 MIDDLEWARE = [
@@ -94,8 +97,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': 'db', # set in docker-compose.yml
-        'PORT': 5432 # default postgres port
+        'HOST': 'db',  # set in docker-compose.yml
+        'PORT': 5432  # default postgres port
     }
 }
 
@@ -139,7 +142,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
-] 
+]
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -163,3 +166,6 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+ACCOUNT_FORMS = {'signup': 'users.forms.CustomUserCreationForm'}
+PHONENUMBER_DEFAULT_REGION = 'US'
