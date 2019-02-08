@@ -1,6 +1,8 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
+from rides.models import Ride
 from .models import Customer
 from .serializers import CustomerSerializer
 from .forms import RideForm
@@ -50,5 +52,11 @@ class CustomerDelete(DeleteView):
     success_url = reverse_lazy('pages:home')
 
 
-class CustomerListRides(ListView):
-    model = Customer
+class CustomerRideList(ListView):
+    context_object_name = 'ride_list'
+    template_name = 'customers/customer_rides.html'
+
+    def get_queryset(self):
+        self.customer = get_object_or_404(
+            Customer, pk=self.kwargs['pk'])
+        return Ride.objects.filter(customers=self.customer)

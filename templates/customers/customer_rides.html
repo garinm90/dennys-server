@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}All Customers{% endblock title %}
+
+{% block content %}
+
+{% for ride in ride_list %}
+{{ ride.ride_name }}<br>
+{% endfor %}
+
+{% endblock %}
