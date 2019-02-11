@@ -12,6 +12,7 @@ django-debug-toolbar = "*"
 djangorestframework = "*"
 django-phonenumber-field = "*"
 phonenumbers = "*"
+django-autocomplete-light = "*"
 
 [dev-packages]
 "autopep8" = "*"

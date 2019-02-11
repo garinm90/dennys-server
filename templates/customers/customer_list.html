@@ -13,18 +13,18 @@
   <thead class="thead-light">
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Contact</th>
-      <th scope="col">Jobs</th>
-      <th scope="col">Rides</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
 {% for customer in customers %}
 <tr>
     <td>{{ customer.customer_name }}</td>
-    <td><a href=#>Contact Details</a></td>
-    <td><a href=#>Job Details</a></td>
-    <td><a href=#>Ride Details</a></td>
+    <td><a href="{% url 'customers:detail_customer' customer.id %}">Contact</a></td>
+    <td><a href=#>Jobs</a></td>
+    <td><a href="{% url 'rides:customer_rides' customer.id %}">Rides</a></td>
 
 
 </tr>

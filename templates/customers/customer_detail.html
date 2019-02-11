@@ -6,9 +6,20 @@
 {% block content %}
 
 
+<table class="table">
+<tr>
+    <th>{{ customer }}</th>
+</tr>
+<tr>
+    <td>{{ customer.customer_phonenumber }}</td>
+</tr>
+<tr>
+    <td>{{ customer.customer_email }}</td>
+</tr>
+<tr>
+    <td>{{ customer.customer_company }}</td>
+</tr>
+</table>
 
-{{ customer }}
-{% for ride in  customer.customer_rides.all %}
-{{ ride }}
-{% endfor %}
+
 {% endblock %}

@@ -4,9 +4,13 @@
 {% block title %}All Customers{% endblock title %}
 
 {% block content %}
+<h1>{{ customer }}</h1>
+<hr>
 
-{% for ride in ride_list %}
-{{ ride.ride_name }}<br>
+<ul class="list-unstyled">
+{% for ride in rides %}
+<li>{{ ride }}</li>
 {% endfor %}
+</ul>
 
 {% endblock %}
