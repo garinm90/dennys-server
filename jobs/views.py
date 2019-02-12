@@ -2,6 +2,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
 from .models import Job
+from .forms import JobForm
 # Create your views here.
 
 
@@ -17,7 +18,7 @@ class JobDetail(DetailView):
 
 class JobCreate(CreateView):
     model = Job
-    fields = ('job_number', 'customer', 'ride',)
+    form_class = JobForm
 
 
 class JobUpdate(UpdateView):

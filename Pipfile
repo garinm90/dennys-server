@@ -13,6 +13,7 @@ djangorestframework = "*"
 django-phonenumber-field = "*"
 phonenumbers = "*"
 django-autocomplete-light = "*"
+django-filer = "*"
 
 [dev-packages]
 "autopep8" = "*"

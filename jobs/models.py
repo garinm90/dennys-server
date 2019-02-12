@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.core.validators import MinValueValidator
 from django.utils.text import slugify
-# Create your models here.
+from filer.fields.image import FilerImageField
 
 
 class Job(models.Model):
@@ -28,3 +28,8 @@ class Job(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.job_number)
         super(Job, self).save(*args, **kwargs)
+
+
+class JobImage(models.Model):
+    # image = models.ForeignKey('', on_delete=models.CASCADE)
+    job = models.ForeignKey('Job', on_delete=models.CASCADE)

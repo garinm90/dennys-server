@@ -5,8 +5,11 @@
 
 {% block content %}
 <form method="post">{% csrf_token %}
-    {{ form|crispy }}
-
-    <input type="submit" value="Save">
+  <table class="table table-bordered">
+    {{ form.as_table }}
+  </table>
+    <input class="btn btn-primary" type="submit" value="Create Job">
 </form>
+
+{{ form.media }}
 {% endblock %}

@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework',
     'phonenumber_field',
+    'easy_thumbnails',
+    'filer',
+    'mptt',
 
     # Local
     'users',
@@ -173,3 +176,25 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ACCOUNT_FORMS = {'signup': 'users.forms.CustomUserCreationForm'}
 PHONENUMBER_DEFAULT_REGION = 'US'
+
+
+FILER_STORAGES = {
+    'public': {
+        'main': {
+            'ENGINE': 'filer.storage.PublicFileSystemStorage',
+            'OPTIONS': {
+                'location': '/path/to/media/filer',
+                'base_url': '/media/filer/',
+            },
+            'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
+            'UPLOAD_TO_PREFIX': 'filer_public',
+        },
+        'thumbnails': {
+            'ENGINE': 'filer.storage.PublicFileSystemStorage',
+            'OPTIONS': {
+                'location': '/path/to/media/filer_thumbnails',
+                'base_url': '/media/filer_thumbnails/',
+            },
+        },
+    },
+}
