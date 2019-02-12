@@ -1,11 +1,11 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
-from dal import autocomplete
+
 from .models import Customer
 from rides.models import Ride
 from .serializers import CustomerSerializer
-from .forms import RideForm
+from .forms import CustomerForm
 from rest_framework import viewsets, generics
 
 
@@ -38,17 +38,7 @@ class CustomerCreate(CreateView):
 
 class CustomerUpdate(UpdateView):
     model = Customer
-    form_class = RideForm
-
-
-class CustomerRideAutoComplete(autocomplete.Select2QuerySetView):
-    template_name = 'customer/customer_form.html'
-
-    def get_queryset(self):
-        qs = Ride.objects.all()
-        if self.q:
-            qs = qs.filter(name__istartswith=self.q)
-        return qs
+    form_class = CustomerForm
 
 
 class CustomerDelete(DeleteView):

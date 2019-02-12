@@ -39,5 +39,4 @@ class RidesCustomer(ListView):
             Customer, pk=self.kwargs['pk'])
         context['rides'] = Ride.objects.filter(customers=self.customer)
         context['customer'] = self.customer
-        print(context)
         return context

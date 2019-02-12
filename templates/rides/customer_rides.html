@@ -4,7 +4,15 @@
 {% block title %}All Customers{% endblock title %}
 
 {% block content %}
+<div class="row">
+<div class="col-4">
 <h1>{{ customer }}</h1>
+<a href="{% url 'customers:update_customer' customer.id %}">
+    <button class="btn btn-danger">Update</button>
+</a>
+</div>
+
+</div>
 <hr>
 
 <ul class="list-unstyled">
